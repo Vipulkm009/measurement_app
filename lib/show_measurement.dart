@@ -1,39 +1,47 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
-
+// import 'package:firebase_storage/firebase_storage.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ShowMeasurement extends StatefulWidget {
-  PickedFile? imageFile;
+  String url;
 
-  ShowMeasurement({required this.imageFile});
+  ShowMeasurement({required this.url});
 
   @override
   _ShowMeasurementState createState() => _ShowMeasurementState();
 }
 
 class _ShowMeasurementState extends State<ShowMeasurement> {
-  Future uploadImageToFirebase(BuildContext context) async {
-    String fileName = basename(widget.imageFile!.path);
-    StorageReference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('uploads/$fileName');
-    StorageUploadTask uploadTask = firebaseStorageRef.putFile(widget.imageFile);
-    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-    taskSnapshot.ref.getDownloadURL().then(
-          (value) => print("Done: $value"),
-        );
+  // @override
+  // void initState() {}
+  var data;
+
+  void getData() async {
+    http.Response response = await http.post(
+      Uri.parse(
+          'https://backend-test-zypher.herokuapp.com/uploadImageforMeasurement'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'imageURL': widget.url,
+      }),
+    );
+    print(response.body);
+    data = jsonDecode(response.body)[0];
   }
 
   @override
-  void initState() {}
-
-  @override
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: Image.file(File(widget.imageFile!.path)),
+          child: Text(
+            data.toString(),
+          ),
         ),
       ),
     );

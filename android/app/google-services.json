@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "956485334942",
+    "project_id": "measurement-app-f2449",
+    "storage_bucket": "measurement-app-f2449.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956485334942:android:0044afed966447139a888f",
+        "android_client_info": {
+          "package_name": "com.vipulkm.measurement_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956485334942-4voemk854ppkkbfule906565d5o6nsbf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vipulkm.measurement_app",
+            "certificate_hash": "acfc35ce742bd2c3db820e44956e978658cde7d6"
+          }
+        },
+        {
+          "client_id": "956485334942-3b54cbiu8h8dolrj867pgr3mo0tda96c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD16qdUCrPH6TCeW5-UqfSbHkbRs2rHc7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956485334942-3b54cbiu8h8dolrj867pgr3mo0tda96c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
